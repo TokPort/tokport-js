@@ -1,0 +1,79 @@
+{
+  "name": "@tokport/ai-sdk-provider",
+  "version": "0.1.0",
+  "description": "Vercel AI SDK provider for TokPort: OpenAI-compatible image and video generation (generateImage, experimental_generateVideo).",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "type-check": "tsc -p tsconfig.json",
+    "test": "bun test",
+    "prepublishOnly": "bun run type-check && bun test && bun run build"
+  },
+  "keywords": [
+    "ai",
+    "ai-sdk",
+    "vercel-ai-sdk",
+    "provider",
+    "tokport",
+    "image generation",
+    "video generation",
+    "text-to-image",
+    "text-to-video",
+    "openai-compatible",
+    "seedream",
+    "seedance",
+    "kling",
+    "nano-banana",
+    "gpt-image",
+    "qwen-image",
+    "image-to-video"
+  ],
+  "homepage": "https://tokport.io/docs?utm_source=npm&utm_medium=package&utm_campaign=tokport-js",
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {
+    "@ai-sdk/provider": "4.0.31",
+    "@ai-sdk/provider-utils": "5.0.65"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.76 || ^4.1.8"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.3",
+    "ai": "7.0.148",
+    "typescript": "5.9.3",
+    "zod": "4.1.12"
+  },
+  "bugs": {
+    "url": "https://github.com/TokPort/tokport-js/issues",
+    "email": "support@tokport.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TokPort/tokport-js.git",
+    "directory": "packages/ai-sdk-provider"
+  },
+  "author": "TokPort <support@tokport.io> (https://tokport.io)"
+}

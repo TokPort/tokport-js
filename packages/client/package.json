@@ -1,0 +1,73 @@
+{
+  "name": "@tokport/client",
+  "version": "0.1.0",
+  "description": "TypeScript client for the TokPort image & video generation API: sync calls, queue (submit / status / stream / result / cancel), webhooks helpers and a server-side proxy for browser apps.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "tokport",
+    "image generation",
+    "video generation",
+    "ai",
+    "api client",
+    "openai compatible",
+    "seedance",
+    "kling",
+    "gpt-image",
+    "queue",
+    "webhooks",
+    "seedream",
+    "nano-banana",
+    "qwen-image",
+    "text-to-image",
+    "text-to-video",
+    "image-to-video"
+  ],
+  "homepage": "https://tokport.io/docs/clients?utm_source=npm&utm_medium=package&utm_campaign=tokport-js",
+  "bugs": {
+    "url": "https://github.com/TokPort/tokport-js/issues",
+    "email": "support@tokport.io"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./proxy": {
+      "types": "./dist/proxy.d.ts",
+      "import": "./dist/proxy.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsup src/index.ts src/proxy.ts --format esm --dts --clean --target es2020 --tsconfig tsconfig.json",
+    "test": "bun test",
+    "prepublishOnly": "bun run build && bun test",
+    "type-check": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "tsup": "8",
+    "typescript": "5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TokPort/tokport-js.git",
+    "directory": "packages/client"
+  },
+  "author": "TokPort <support@tokport.io> (https://tokport.io)"
+}

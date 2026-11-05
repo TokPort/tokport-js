@@ -1,0 +1,38 @@
+name: Release
+
+# Push client-v0.1.1 or ai-sdk-provider-v0.1.1 (matching that package.json version) to publish it to
+# npm with provenance. Uses npm trusted publishing (OIDC); configure it once per package on npmjs.com.
+on:
+  push:
+    tags: ["client-v*", "ai-sdk-provider-v*"]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - run: bun install --frozen-lockfile
+      - name: Resolve package and check the version
+        id: pkg
+        run: |
+          name="${GITHUB_REF_NAME%-v*}"
+          version="${GITHUB_REF_NAME##*-v}"
+          dir="packages/$name"
+          test -d "$dir" || { echo "no package $dir"; exit 1; }
+          actual=$(node -p "require('./$dir/package.json').version")
+          test "$actual" = "$version" || { echo "tag $version != package.json $actual"; exit 1; }
+          echo "dir=$dir" >> "$GITHUB_OUTPUT"
+      - run: npm publish
+        working-directory: ${{ steps.pkg.outputs.dir }}
+      - run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}

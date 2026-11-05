@@ -1,0 +1,11 @@
+{
+  "name": "tokport-js",
+  "private": true,
+  "description": "TypeScript SDKs for the TokPort image & video generation API — https://tokport.io",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "generate": "bun scripts/generate-models.ts",
+    "build": "bun run --filter '*' build",
+    "test": "bun test packages"
+  }
+}
