@@ -9,6 +9,8 @@ Official TypeScript/JavaScript packages for **[TokPort](https://tokport.io/?utm_
 | [`@tokport/client`](packages/client) | Zero-dependency client: sync calls, the queue (submit / status / stream / result / cancel), webhook verification and a server-side proxy for browser apps |
 | [`@tokport/ai-sdk-provider`](packages/ai-sdk-provider) | Vercel AI SDK provider: `generateImage` and `experimental_generateVideo` |
 
+## Install from source
+
 Build the packages from this public repository:
 
 ```bash
