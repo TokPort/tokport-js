@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 15
     defaults:
       run:
-        working-directory: ${{ runner.temp }}/nextjs-generation
+        working-directory: ../nextjs-generation
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -23,7 +23,7 @@ jobs:
           bun-version-file: examples/nextjs-generation/package.json
       - name: Copy example outside the SDK workspaces
         working-directory: .
-        run: cp -R examples/nextjs-generation "$RUNNER_TEMP/nextjs-generation"
+        run: cp -R examples/nextjs-generation ../nextjs-generation
       - run: bun install --frozen-lockfile
       - run: bun run test
       - run: bun run build
