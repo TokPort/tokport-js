@@ -4,13 +4,26 @@
 
 Official TypeScript/JavaScript packages for **[TokPort](https://tokport.io/?utm_source=github&utm_medium=readme&utm_campaign=tokport-js)**, the pay-as-you-go API for image and video generation. One API key gives you GPT Image, Nano Banana, Seedream, Seedance, Kling, Qwen Image, Wan and [30+ more models](https://tokport.io/models?utm_source=github&utm_medium=readme&utm_campaign=tokport-js).
 
-| Package | npm | What it is |
-| --- | --- | --- |
-| [`@tokport/client`](packages/client) | [![npm](https://img.shields.io/npm/v/@tokport/client.svg)](https://www.npmjs.com/package/@tokport/client) | Zero-dependency client: sync calls, the queue (submit / status / stream / result / cancel), webhook verification and a server-side proxy for browser apps |
-| [`@tokport/ai-sdk-provider`](packages/ai-sdk-provider) | [![npm](https://img.shields.io/npm/v/@tokport/ai-sdk-provider.svg)](https://www.npmjs.com/package/@tokport/ai-sdk-provider) | Vercel AI SDK provider: `generateImage` and `experimental_generateVideo` |
+| Package | What it is |
+| --- | --- |
+| [`@tokport/client`](packages/client) | Zero-dependency client: sync calls, the queue (submit / status / stream / result / cancel), webhook verification and a server-side proxy for browser apps |
+| [`@tokport/ai-sdk-provider`](packages/ai-sdk-provider) | Vercel AI SDK provider: `generateImage` and `experimental_generateVideo` |
+
+Build the packages from this public repository:
 
 ```bash
-npm install @tokport/client
+git clone https://github.com/TokPort/tokport-js.git
+cd tokport-js
+bun install --frozen-lockfile
+bun run build
+```
+
+Then install the built package from your app. For an app in a sibling directory to `tokport-js`:
+
+```bash
+bun add ../tokport-js/packages/client
+# For Vercel AI SDK integrations instead:
+# bun add ../tokport-js/packages/ai-sdk-provider
 ```
 
 ```ts
@@ -24,6 +37,10 @@ console.log(image.data[0].url);
 Get an API key at **[tokport.io/dashboard/keys](https://tokport.io/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=tokport-js)**. Docs: [tokport.io/docs/clients](https://tokport.io/docs/clients?utm_source=github&utm_medium=readme&utm_campaign=tokport-js) · Pricing: [tokport.io/pricing](https://tokport.io/pricing?utm_source=github&utm_medium=readme&utm_campaign=tokport-js)
 
 Other languages: [Python](https://github.com/TokPort/tokport-python) · [Go](https://github.com/TokPort/tokport-go)
+
+## Examples
+
+[Next.js image and video starter](examples/nextjs-generation): a standalone Bun + TypeScript app with server-side API credentials, image previews, video polling and MP4 downloads. Includes mock-backed unit and mobile browser tests. Follow the example's README to install and run it; it has its own dependencies and lockfile outside the SDK workspaces.
 
 ## Development
 
