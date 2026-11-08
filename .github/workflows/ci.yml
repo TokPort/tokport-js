@@ -6,6 +6,30 @@ on:
   pull_request:
 
 jobs:
+  nextjs-example:
+    name: Standalone Next.js example
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ../nextjs-generation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: examples/nextjs-generation/package.json
+      - name: Copy example outside the SDK workspaces
+        working-directory: .
+        run: cp -R examples/nextjs-generation ../nextjs-generation
+      - run: bun install --frozen-lockfile
+      - run: bun run test
+      - run: bun run build
+      - run: bun run typecheck
+      - run: bunx playwright install --with-deps chromium
+      - run: bun run test:e2e
   test:
     runs-on: ubuntu-latest
     steps:

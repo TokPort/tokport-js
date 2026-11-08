@@ -1,0 +1,3 @@
+[test]
+# Keep bare `bun test` focused on SDKs; the standalone example has its own suite.
+root = "./packages"

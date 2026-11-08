@@ -2,9 +2,7 @@
 
 TypeScript client for the [TokPort](https://tokport.io?utm_source=npm&utm_medium=readme&utm_campaign=tokport-js) image and video generation API. Zero dependencies; works in Node 18+, Bun, Deno and browsers (through the proxy).
 
-```bash
-npm install @tokport/client
-```
+Follow the repository's [source installation instructions](../../README.md#install-from-source) to clone and build the SDK, then install the built `packages/client` directory into your app. The import name remains `@tokport/client`.
 
 Get an API key at [tokport.io/dashboard/keys](https://tokport.io/dashboard/keys?utm_source=npm&utm_medium=readme&utm_campaign=tokport-js). Model ids and prices: [tokport.io/models](https://tokport.io/models?utm_source=npm&utm_medium=readme&utm_campaign=tokport-js).
 

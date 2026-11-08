@@ -8,10 +8,12 @@ Requires AI SDK 7 (`ai@^7`) and Node.js 22 or newer.
 
 ## Install
 
+Follow the repository's [source installation instructions](../../README.md#install-from-source) to clone and build the SDK, then install the built `packages/ai-sdk-provider` directory into your app. The import name remains `@tokport/ai-sdk-provider`.
+
+Install AI SDK 7 and Zod separately in your app:
+
 ```bash
-npm install @tokport/ai-sdk-provider ai zod
-# or
-bun add @tokport/ai-sdk-provider ai zod
+bun add 'ai@^7' 'zod@^4.1.8'
 ```
 
 ## Setup
